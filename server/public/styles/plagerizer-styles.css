@@ -1,0 +1,26 @@
+h1 {
+	font: 60px Sail, serif;
+}
+
+p {
+	font: 24px 'Josefin Slab', sans-serif;
+}
+
+body {
+	text-align: center;
+    animation: colorshift 80s infinite alternate;
+    background-color: #FFEAEA;
+}
+
+/* body background animation */
+@keyframes colorshift {
+      0% {background-color: #FFEAEA;}
+     17% {background-color: #F8E9FC;}
+     34% {background-color: #F2F9F8;}
+     50% {background-color: #FFE3FF;}
+     67% {background-color: #EFF9FC;}
+     84% {background-color: #FAE7EC;}
+    100% {background-color: #EEEEFF;}
+}
+
+/* https://coolors.co/94b9af-90a583-9d8420-942911-593837 */
