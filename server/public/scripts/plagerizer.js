@@ -21,18 +21,18 @@ $(function () {
                 quote: data[0].content,
                 author: data[0].title
               }
-              console.log(quote,"kljhljh");
+
               insertQuote(quote);
         }); 
 
   }
   
-  getRandQuote(); // gets the first
+  getRandQuote(); // gets the first random quote
 
   let insertQuote = function (quote) {
-    console.log(quote);
+    // console.log(quote);
     $("#quote").append(quote.quote + "\n" + quote.author);
-    console.log('here');
+    // console.log('here');
 
   }
 
