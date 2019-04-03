@@ -25,7 +25,6 @@ $(function () {
               insertQuote(quote);
         }); 
 
-        // return rquote;
   }
   
   getRandQuote(); // gets the first
