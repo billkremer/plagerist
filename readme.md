@@ -8,8 +8,8 @@ We take great famous quotes, swap some words and make them yours!
 ## APIs
 
 * [Quotes on Design](http://quotesondesign.com/wp-json/posts)
-* [Wikipedia](https://en.wikipedia.org/wiki/Markdown)
-
+<!-- * [Wikipedia](https://en.wikipedia.org/wiki/Markdown)
+ -->
 
 ## Log
 * 1-April-2019 creation
