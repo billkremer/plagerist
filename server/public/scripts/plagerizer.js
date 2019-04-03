@@ -7,19 +7,37 @@ $(function () {
 
 
   let getRandQuote = function () {
-    $.ajax({
+
+     $.ajax({
             type: "GET",
             url: "http://quotesondesign.com/wp-json/posts",
             data: { "filter[orderby]": "rand",
-                    "filter[posts_per_page]": "1",
+                    "filter[posts_per_page]": "5",
             },
           })
-        .done(function( data ) {
+        .done(function (data) {
           console.log( "Sample of data:", data );
-        });  
+              let quote = {
+                quote: data[0].content,
+                author: data[0].title
+              }
+              console.log(quote,"kljhljh");
+              insertQuote(quote);
+        }); 
+
+        // return rquote;
   }
   
   getRandQuote(); // gets the first
+
+  let insertQuote = function (quote) {
+    console.log(quote);
+    $("#quote").append(quote.quote + "\n" + quote.author);
+    console.log('here');
+
+  }
+
+
 
 // $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
 //   $("body").append(a[0].content + "<p>— " + a[0].title + "</p>")
