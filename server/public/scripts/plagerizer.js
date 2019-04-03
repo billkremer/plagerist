@@ -7,30 +7,23 @@ $(function () {
 
 
   let getRandQuote = function () {
-
     $.ajax({
-              type: "GET",
-              url: "http://quotesondesign.com/wp-json/posts",
-              data: { "filter[orderby]": "rand",
-                      "filter[posts_per_page]": "1",
-              },
-              success: function (res) {
-                console.log(res[0].content);
-                // people = data;
-                // createTracker();
-                // showPerson();
-                // startTimer();
-              } //closes success
-            })
-    // .done(function( data ) {
-    //     // if ( console && console.log ) {
-    //       console.log( "Sample of data:", data );
-    //     }
-    //   );  
-
+            type: "GET",
+            url: "http://quotesondesign.com/wp-json/posts",
+            data: { "filter[orderby]": "rand",
+                    "filter[posts_per_page]": "1",
+            },
+          })
+        .done(function( data ) {
+          console.log( "Sample of data:", data );
+        });  
   }
   
+  getRandQuote(); // gets the first
 
+// $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
+//   $("body").append(a[0].content + "<p>— " + a[0].title + "</p>")
+// });
 
 // this.getRandomGif = function () {
 //     giphyGetParams.params.tag = " ";
