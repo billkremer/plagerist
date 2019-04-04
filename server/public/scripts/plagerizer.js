@@ -5,14 +5,18 @@ $(function () {
              " ┴  ┴─┘┴ ┴└─┘└─┘┴└─┴└─┘└─┘┴└─ ";
              console.log("Welcome to the\n" + '%c' + plag, 'background: #142020; color: white');
 
+  var theQuote = {};
 
   let getRandQuote = function () {
+
+    let randQuoteNum = Math.ceil(Math.random()*10);
+
 
      $.ajax({
             type: "GET",
             url: "http://quotesondesign.com/wp-json/posts",
             data: { "filter[orderby]": "rand",
-                    "filter[posts_per_page]": "5",
+                    "filter[posts_per_page]": randQuoteNum,
             },
           })
         .done(function (data) {
@@ -23,6 +27,9 @@ $(function () {
               }
 
               insertQuote(quote);
+              // setQuote(quote);
+              theQuote = quote;
+              console.log(theQuote,'thequote');
         }); 
 
   }
@@ -36,7 +43,14 @@ $(function () {
 
   }
 
+  // let setQuote = function (quote) {
+  //   theQuote = quote;
 
+  // };
+
+ $('#top').click(function () {
+  console.log(theQuote);
+ })
 
 // $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
 //   $("body").append(a[0].content + "<p>— " + a[0].title + "</p>")
