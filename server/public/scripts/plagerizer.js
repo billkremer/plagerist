@@ -9,8 +9,8 @@ $(function () {
 
   let getRandQuote = function () {
 
-    let randQuoteNum = Math.ceil(Math.random()*10);
-
+    let randQuoteNum = Math.ceil(Math.random()*10); // improves randomness 
+    let whichQuoteNum = Math.ceil(Math.random()*randQuoteNum)-1;
 
      $.ajax({
             type: "GET",
@@ -20,16 +20,16 @@ $(function () {
             },
           })
         .done(function (data) {
-          console.log( "Sample of data:", data );
+          // console.log( "Sample of data:", data );
               let quote = {
-                quote: data[0].content,
-                author: data[0].title
+                quote: data[whichQuoteNum].content,
+                author: data[whichQuoteNum].title
               }
 
               insertQuote(quote);
-              // setQuote(quote);
+
               theQuote = quote;
-              console.log(theQuote,'thequote');
+              // console.log(theQuote,'thequote');
         }); 
 
   }
@@ -43,6 +43,11 @@ $(function () {
 
   }
 
+// String target = someString.replaceAll("<[^>]*>", "");
+
+// var regex = "<[^>]*>";
+
+// console.log(theQu.replace(regex, ''));
   // let setQuote = function (quote) {
   //   theQuote = quote;
 
@@ -50,7 +55,37 @@ $(function () {
 
  $('#top').click(function () {
   console.log(theQuote);
+  var regex = /<[^>]*>/gm;
+  console.log(  'x'+(theQuote.quote.replace(regex, ' ')).replace(/\s+/gm,' ').trim()+'x');
+  quoteToArray(theQuote);
  })
+
+
+let quoteToArray = function (quoteObj) {
+  let quoteArray = [];
+
+  let regex1 = /<[^>]*>/gm;
+  let regex2 = /\s+/gm;
+  quoteObj.quote =  (quoteObj.quote.replace(regex1, ' ')).replace(regex2,' ').trim();
+
+  quoteArray = quoteObj.quote.split(' ');
+  console.log(quoteArray);
+
+  for (var i = quoteArray.length - 1; i >= 0; i--) {
+
+    if (quoteArray[i].length > 5) {
+      //something
+    };
+  
+
+  }
+
+}
+
+
+
+
+
 
 // $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
 //   $("body").append(a[0].content + "<p>— " + a[0].title + "</p>")
