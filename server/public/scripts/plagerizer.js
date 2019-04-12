@@ -12,35 +12,73 @@ $(function () {
     let randQuoteNum = Math.ceil(Math.random()*10); // improves randomness 
     let whichQuoteNum = Math.ceil(Math.random()*randQuoteNum)-1;
 
-     $.ajax({
-            type: "GET",
-            url: "http://quotesondesign.com/wp-json/posts",
-            data: { "filter[orderby]": "rand",
-                    "filter[posts_per_page]": randQuoteNum,
-            },
-          })
-        .done(function (data) {
-          // console.log( "Sample of data:", data );
-              let quote = {
-                quote: data[whichQuoteNum].content,
-                author: data[whichQuoteNum].title
-              }
+     // $.ajax({
+     //        type: "GET",
+     //        url: "http://quotesondesign.com/wp-json/posts",
+     //        data: { "filter[orderby]": "rand",
+     //                "filter[posts_per_page]": randQuoteNum,
+     //        },
+     //      })
+     //    .done(function (data) {
+     //      // console.log( "Sample of data:", data );
+     //          let quote = {
+     //            quote: data[whichQuoteNum].content,
+     //            author: data[whichQuoteNum].title
+     //          }
 
-              insertQuote(quote);
+     //          insertQuote(quote);
 
-              theQuote = quote;
-              // console.log(theQuote,'thequote');
-        }); 
+     //          theQuote = quote;
+     //          // console.log(theQuote,'thequote');
+     //    });
+
+
+  fetch('//quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=' + randQuoteNum)
+    .then(response => response.json())
+    .then(function(data) {
+      // console.log(JSON.stringify(myJson[whichQuoteNum]));
+      // console.log(myJson[whichQuoteNum]);
+      console.log(data[whichQuoteNum]);
+
+      let quote = {
+        quote: data[whichQuoteNum].content,
+        author: data[whichQuoteNum].title
+      }
+
+      insertQuote(quote);
+
+      theQuote = quote;
+
+    });
+
+
+
+
+
 
   }
   
   getRandQuote(); // gets the first random quote
 
-  let insertQuote = function (quote) {
+  function insertQuote (quote) {
     // console.log(quote);
     $("#quote").append(quote.quote + "\n" + quote.author);
     // console.log('here');
 
+  }
+
+
+
+  function insertQuoteArray (quoteArray) {
+
+    let quoteBuildUp = "";
+
+
+
+
+
+
+    $("#quote").append(quoteBuildUp);
   }
 
 // String target = someString.replaceAll("<[^>]*>", "");
@@ -61,7 +99,7 @@ $(function () {
  })
 
 
-let quoteToArray = function (quoteObj) {
+function quoteToArray (quoteObj) {
   let quoteArray = [];
 
   let regex1 = /<[^>]*>/gm;
@@ -69,16 +107,19 @@ let quoteToArray = function (quoteObj) {
   quoteObj.quote =  (quoteObj.quote.replace(regex1, ' ')).replace(regex2,' ').trim();
 
   quoteArray = quoteObj.quote.split(' ');
-  console.log(quoteArray);
 
+
+  // check whether it's a long word...
   for (var i = quoteArray.length - 1; i >= 0; i--) {
-
     if (quoteArray[i].length > 5) {
-      //something
+      quoteArray[i] = [quoteArray[i],true];
+    } else {
+      quoteArray[i] = [quoteArray[i],false];
     };
-  
-
   }
+
+
+  console.log(quoteArray);
 
 }
 
@@ -87,50 +128,10 @@ let quoteToArray = function (quoteObj) {
 
 
 
-// $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&callback=", function(a) {
-//   $("body").append(a[0].content + "<p>— " + a[0].title + "</p>")
-// });
 
-// this.getRandomGif = function () {
-//     giphyGetParams.params.tag = " ";
-//     console.log('tag', giphyGetParams.params.tag);
-//       return $http.get(apiUrl + 'random', giphyGetParams).then(function(response) {
-//       //   ctrl.pokemonList = response.data.results;
-//      console.log('got a random response!', response);
-//     //  console.log(response.data.data.image_url);
-//       return response.data.data;
-//   //    ctrl.imageAlt = response.data.data.url;
-//     }).catch(function(err) {
-//       console.log('error getting random data from API :', err);
-//     });
-//   }; // close get random
-
-
-
-
-// $.ajax({
-
-//   "https://sumitgohil-random-quotes-v1.p.rapidapi.com/fetch/randomQuote")
-// .header("X-RapidAPI-Key", "70c2080f54msh6cd254bf8b0c8e3p108f64jsne0e578285286")
-// .end(function (result) {
-//   console.log(result.status, result.headers, result.body);
-// });
-
-// fetch('//www.forbes.com/forbesapi/thought/uri.json?enrich=false&query='+randQid)
-//   .then(function(response) {
-//     console.log(response);
-//     return response;
-//     // return response.json();
-//   })
-//   .then(function(myJson) {
-//     // console.log(JSON.stringify(myJson));
-//     console.log(myJson);
-//   });
-
-
-// $.getScript('scripts/service.js', function() {
-//     console.log('Load was performed.');
-// });
+$.getScript('scripts/synonym-service.js', function() {
+    console.log('Load was performed.');
+});
 
   	// $('#quote').('article')
 

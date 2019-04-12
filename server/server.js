@@ -11,5 +11,5 @@ app.get('/', function (req, res) {
 });
 
 app.listen(app.get('port'), function () {
-    console.log('Server up and running on port', app.get('port'),"\ntype Ctrl + C to quit.");
+    console.log('Server up and running on http://localhost:', app.get('port'),"\ntype Ctrl + C to quit.");
   });
