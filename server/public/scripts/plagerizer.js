@@ -54,8 +54,6 @@ $(function () {
 
 
 
-
-
   }
   
   getRandQuote(); // gets the first random quote
@@ -67,19 +65,73 @@ $(function () {
 
   }
 
+  function getSynonyms (word) {
 
+     $.ajax({
+            type: "GET",
+            url: "http://quotesondesign.com/wp-json/posts",
+            data: { "filter[orderby]": "rand",
+                    "filter[posts_per_page]": randQuoteNum,
+            },
+          })
+        .done(function (data) {
+          // console.log( "Sample of data:", data );
+              let quote = {
+                quote: data[whichQuoteNum].content,
+                author: data[whichQuoteNum].title
+              }
+
+              insertQuote(quote);
+
+              theQuote = quote;
+              // console.log(theQuote,'thequote');
+        });
+
+
+
+  }
 
   function insertQuoteArray (quoteArray) {
 
-    let quoteBuildUp = "";
+    let $quoteBuildUp = $('<form></form>');
+
+    for (var i = 0; i <= quoteArray.length; i++) {
+
+      if (quoteArray[i][1]) {
+        quoteBuildUp.append('<select></select>');
 
 
 
+
+// <select>
+//   <option value="volvo">Volvo</option>
+//   <option value="saab">Saab</option>
+//   <option value="mercedes">Mercedes</option>
+//   <option value="audi">Audi</option>
+// </select>
+
+      } else {
+        quoteBuildUp.append('<span ')
+
+
+      }
+    }
+
+
+    quoteBuildUp.append()
+
+    $newTaskRow.append('<textarea class="task col-xs-6" type="text" name="title" value="' + task.task + '">' + task.task + '</textarea>' );
+
+    var taskDueDate = new Date(task.task_due).toISOString().slice(0,10);
+
+    $newTaskRow.append('<input class="dueDate col-xs-2" type="date" name="task_due" value="' + taskDueDate + '"/>');
 
 
 
     $("#quote").append(quoteBuildUp);
   }
+
+
 
 // String target = someString.replaceAll("<[^>]*>", "");
 
