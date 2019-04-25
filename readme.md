@@ -8,11 +8,12 @@ We take great famous quotes, swap some words and make them yours!
 ## APIs
 
 * [Quotes on Design](http://quotesondesign.com/wp-json/posts)
-<!-- * [Wikipedia](https://en.wikipedia.org/wiki/Markdown)
- -->
+* [DataMuse](https://www.datamuse.com/api/)
+
 
 ## Log
 * 1-April-2019 creation
+* 25-April-2019 getting synonyms for long words.  Click on title and observe in console.
 
 ## How To Run Locally
 
