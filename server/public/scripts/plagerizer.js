@@ -5,6 +5,8 @@ $(function () {
              " ┴  ┴─┘┴ ┴└─┘└─┘┴└─┴└─┘└─┘┴└─ ";
              console.log("Welcome to the\n" + '%c' + plag, 'background: #142020; color: white');
 
+             // TODO try replacing spaces with &nbsp;.  ^ doesn't work in firefox
+
   var theQuote = {};
 
   let getRandQuote = function () {
@@ -59,13 +61,15 @@ $(function () {
   getRandQuote(); // gets the first random quote
 
   function insertQuote (quote) {
+    // basic insert the quote
     // console.log(quote);
     $("#quote").append(quote.quote + "\n" + quote.author);
-    // console.log('here');
+
 
   }
 
   function getSynonyms (wordToUse) {
+    // input string, output array of synonyms
     console.log(wordToUse,'word');
     let numOfSyn = 10;
     let synArray = [];
@@ -95,6 +99,7 @@ $(function () {
   }
 
   function insertQuoteArray (quoteArray) {
+    // take the arrayed quote and put it in the dom
 
     let $quoteBuildUp = $('<form></form>');
 
@@ -136,6 +141,8 @@ $(function () {
 
   // };
 
+
+// 
  $('#top').click(function () {
   console.log(theQuote);
   var regex = /<[^>]*>/gm;
@@ -149,6 +156,8 @@ function quoteToArray (quoteObj) {
 
   let regex1 = /<[^>]*>/gm;
   let regex2 = /\s\W+/gm;
+
+  // TODO finish cleaning up quote ' = &#8217; characters.  see console.log
   quoteObj.quote =  (quoteObj.quote.replace(regex1, ' ')).replace(regex2,' ').trim();
 
   quoteArray = quoteObj.quote.split(' ');
