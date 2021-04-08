@@ -2,8 +2,7 @@
 
 <html>
   <head>
-<!--     <meta charset="utf-8">
- -->    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Sail" rel="stylesheet">
+
     <link href="styles/plagerizer-styles.css" rel="stylesheet">
 
     <script src="scripts/jquery.min.js"></script> 
@@ -15,26 +14,33 @@
   <body>
     <section id="top">
         <h1>The Plagerizer</h1>
-        <p>Take a quote and make it yours</p>
+        <h2>Take a quote and make it yours</h2>
     </section>
 
-<!-- eventually search api for a quote topic
-    <section id=quote-topic>
-        <form>
-            <label>Quote Topic<input type=text></label>
-            <button>
-        </form>
-    </section
--->
+    <section id='quote'>
+    </section>
 
-    <section id=quote>
-        <article>
-            
-        </article>
-        <aside>
-            
-        </aside>
+    <hr class="style-rainbow"/>
+
+    <section id='myQuote'>
+      <form>
+        <p>
+
+        </p>
+        <label for="myName">Your Name:</label>
+        <input type="text" name="myName" value="" />
+        <br/>
+        <br/>
+        <button name='finishQuote'>Finish</button>
+      </form>
 
     </section>
+
+
+    <section id='finalQuote'>
+    </section>
+
+    <!-- <button id="restart">redo </button> -->
   </body>
 </html>
+  

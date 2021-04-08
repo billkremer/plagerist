@@ -1,26 +1,75 @@
-h1 {
-	font: 60px Sail, serif;
-}
-
-p {
-	font: 24px 'Josefin Slab', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Nanum+Gothic&family=Quicksand&family=Sail&display=swap');
 
 body {
 	text-align: center;
-    animation: colorshift 80s infinite alternate;
+    animation: colorshift 100s infinite alternate;
     background-color: #FFEAEA;
+    margin: 25px;
 }
 
 /* body background animation */
 @keyframes colorshift {
-      0% {background-color: #FFEAEA;}
-     17% {background-color: #F8E9FC;}
-     34% {background-color: #F2F9F8;}
-     50% {background-color: #FFE3FF;}
-     67% {background-color: #EFF9FC;}
-     84% {background-color: #FAE7EC;}
-    100% {background-color: #EEEEFF;}
+      0% {background-color: #FFEAEA;} /* pastel red */
+     14% {background-color: #F8E9FC;} /* pastel purple */
+     28% {background-color: #F2F9F8;} /* pastel green */
+     42% {background-color: #FFE3FF;} /* pastel light purple */
+     56% {background-color: #EFF9FC;} /* pastel light blue */
+     70% {background-color: #FAE7EC;} /* pastel pink */
+     84% {background-color: #EEEEFF;} /* pastel blue */
+    100% {background-color: #fefee1;} /* pastel yellow */
 }
 
 /* https://coolors.co/94b9af-90a583-9d8420-942911-593837 */
+/* https://coolors.co/FFEAEA-F8E9FC-F2F9F8-EEEEFF-FAE7EC */
+
+h1 {
+	font: 72px 'Sail', cursive;
+    margin-block-end: 0.25em;
+}
+
+h2 {
+	font: 24px 'Josefin Slab', serif;
+}
+
+hr.style-rainbow {
+  margin-left: 25px;
+  margin-right: 25px;
+  border: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff0000 0%, #ffff00 25%, #00ff00 50%, #00ffff 75%, #0000ff 100%);
+}
+
+#quote {
+	font: 32px 'Josefin Slab', serif;
+    line-height: 1.5em;
+}
+
+#myQuote p, #myQuote select, #myQuote label, #myQuote input, #myQuote br, #myQuote button {
+	font: 30px 'Nanum Gothic', sans-serif;
+    line-height: 1.5em;
+}
+
+#myQuote label, #myQuote input, #myQuote button {
+	display: none;
+}
+
+#myQuote select {
+    background-color: transparent;
+    opacity: 0.8;
+}
+
+#myQuote select:hover {
+    opacity: 1;
+}
+
+#myQuote button {
+    animation: colorshift 100s infinite alternate;
+    background-color: transparent;
+    filter: hue-rotate(30deg);
+}
+
+#finalQuote {
+    font: 32px 'Quicksand', sans-serif;
+}
+
+

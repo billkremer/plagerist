@@ -7,15 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/billkremer/plagerizer2.git"
-  },
   "author": "Bill Kremer <bill.kremer.dev@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "jquery": "^3.6.0"
+    "express": "^4.16.4",
+    "jquery": "^3.5.1"
   }
 }
